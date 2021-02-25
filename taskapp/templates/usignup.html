@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up {% endblock %}
+
+{% block content %}
+	<br>
+	<h1 style="color:Tomato;font-size:50px; font-family:Trebuchet MS;">Sign Up</h1>
+	<form method="POST" action="{% url 'usignup' %}">
+	{% csrf_token %}
+		<input type="text" name="un" placeholder="enter username" required style="border: 4px solid tomato; solid #FF4500; border-radius: 11px;">
+		<br><br>
+		<input type="email" name="em" placeholder="enter email address" required style="border: 4px solid tomato; solid #FF4500; border-radius: 11px;">
+		<br><br>
+		<input type="Submit" value="Sign up" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='OrangeRed'" style="font-size:26; background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  text-align: center;
+  text-decoration: bold;
+  display: inline-block;
+  font-size: 20px;
+  font-family:Franklin Gothic Medium;
+  margin: 8px 2px;
+  cursor: pointer;background-color: Transparent; 
+  color: OrangeRed; 
+  border: 2px solid OrangeRed;}">
+		<br><br>	
+	</form>
+	<h3 style="color:FireBrick; font-size:34px;" >{{ msg }}</h3>
+{% endblock %}	

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+{% block title %}view task {% endblock %}
+
+{% block content %}
+	 
+	<h1 style="color:Tomato; font-size:55px; font-family:Trebuchet MS;">View Your Task Here {{request.user}}</h1>
+	
+	<table border="2" bordercolor="#F5F5DC" style="width:50%;table-layout: fixed;">
+	{% if data %} 
+		
+		{% for d in data %}
+		<tr font color="#F5F5DC">
+			<td style="color:NavajoWhite;word-wrap: break-word;text-align: center;">{{d.task}}</td>
+			<td style="color:NavajoWhite">{{d.timestamp}}</td>
+			<td style="text-align: center;"><b><a onMouseOver="this.style.color='tomato'" onMouseOut="this.style.color='NavajoWhite'" style=" color:NavajoWhite;text-decoration: none"; href="{% url 'delete' id=d.id %}" onclick="return confirm('r ur sure')">Delete </a> </td>
+		</tr>
+		{% endfor %}
+	{% else %}
+		<tr>
+			<td style="color:LavenderBlush;text-align: center;"><b>No Data Found</b></td>
+		</tr>
+		
+	{% endif %}
+</table>
+<br>
+<h2 style="color:LightSalmon; font-size:28px; font-family:Lucida Bright;" > {{ msg1 }} <img src={{icon}} width=40" height="40"> </h2>	
+<h3 style="color:LightSalmon; font-size:28px; font-family:Lucida Bright;" >Total Corona Cases in <u style="font-size:28px;">INDIA</u> : {{ total_cases }}</h3>
+{% endblock %}	

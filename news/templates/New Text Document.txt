@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title> News Project </title>
+	<style type="text/css">
+		*{font-family:calibri; font-size:30px;}
+	</style>
+</head>
+<body>
+	<center>
+		<h1>News App</h1>
+		<form method="POST">
+		{% csrf_token %}
+			<select name='src'>
+				<option value="the-times-of-india"> Times of India</option>
+				<option value="the-hindu">The Hindu</option>			
+			</select>
+			<br><br>
+			<input type="submit">
+		</form>
+		{% if info %}
+			<h2>News From {{ src }}</h2>
+			{% for i in info %}
+				<h3>{{i.title}}</h3>	
+				<h3><a href="{{i.url}}">Read More </a></h3>
+				<img src={{i.urlToImage}}style="width:200px;height:auto;"></img>
+				<hr>
+			{% endfor %}
+		{% end if %}				
+
+
+	</center>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+{% load static %}
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather Project</title>
+	<style type="text/css">
+		*{font-family: Arial; font-size:40px}	
+		.nav {background-color:DarkSalmon; text-align:center; }
+	.nav a{color:white; text-decoration:none; padding:30px; font-size:33px;}	
+	</style>
+	
+	
+</head>
+
+<body id="bg" style="background-image: url('{%static "images/weather.jpg"%}'); background-size:1800px 900px">
+	<div class='nav'>
+	<a href="{% url 'back' %}">Back</a>
+	</div>	
+
+	<center>
+	<br><br>
+	<h1 style="color:Tomato;font-size:95px; font-family:Trebuchet MS;">Weather App by DE</h1>
+	<form method="POST">
+	{% csrf_token %}
+	<br>	
+	<input type="text" name="city" placeholder="Enter City Name" required>	
+	<button type="submit"> <img style="width:30px;height:auto;" src="{% static 'images/search.jpeg' %}" /></button>
+	</form>
+	<h2 style="color:FireBrick;font-family:Trebuchet MS;">{{msg}} <img src={{icon}}></h2>
+	</center>
+</body>
+</html>

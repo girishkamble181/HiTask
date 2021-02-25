@@ -1,0 +1,62 @@
+{% load static %}
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %} {% endblock %}</title>
+	<style type="text/css">
+		*{font-size:40px; font-family:calibri;}
+		.nav {
+  overflow: hidden;
+  background-color:DimGray;
+  opacity: 0.68;
+}
+
+.nav a {
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-size: 26px;
+  font-family:Bahnschrift Light;
+}
+
+.nav a:hover {
+  background-color:PaleTurquoise ;
+  color:tomato;
+}
+
+.nav a.active {
+  background-color: #4CAF50;
+  color: Tomato;
+}				
+
+
+	body { margin: 0;
+			background-image: url('{% static "images/bg7.jpeg" %}');background-repeat:repeat;background-attachment: fixed;
+		}
+	</style>
+		<link rel='icon' href="{% static 'images/g1.jpg'%}">
+</head>
+<body>
+	<center>
+	<div class='nav'>
+	{% if user.is_authenticated %}
+		<b><a href="{% url 'ulogout' %}" >Logout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a> </b>
+		<b><a href="{% url 'create' %}">Create New Task&nbsp;&nbsp;&nbsp;</a></b>
+		<b><a href="{% url 'home' %}">View&nbsp;&nbsp;&nbsp;</a></b>
+		<b><a href="{% url 'logo' %}" style="color:LightYellow;font-family:Brush Script MT;font-size:33;float: left; pointer-events: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;girish</a></b>
+		
+	{% else %}
+		<b><a href="{% url 'newss' %}" style="float: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;News</a></b>
+		<b><a href="{% url 'weatherss' %}" style="float: left;">&nbsp;&nbsp;&nbsp;&nbsp;Weather</a></b>
+		<b><a href="{% url 'usignup' %}">Sign Up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></b>	
+		<b><a href="{% url 'ulogin' %}">Login&nbsp;&nbsp;&nbsp;</a></b>
+		<b><a href="{% url 'uresetpass' %}">Reset Password&nbsp;&nbsp;&nbsp;</a></b>
+	{% endif %}
+	</div>
+	{% block content %} {% endblock %}
+	</center>	
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Create New Task {% endblock %}
+
+{% block content %}
+	
+	<h1 style="color:Tomato;font-size:55px; font-family:Trebuchet MS;">Hii {{user.username}} Create Your Task Here  </h1>
+	<form method="POST" action="{% url 'create' %}">
+	{% csrf_token %}
+		<table>
+			{{tm.as_table}}
+		</table>
+		<input type="submit" value="Save" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='OrangeRed'" style="font-size:26; background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  text-align: center;
+  text-decoration: bold;
+  display: inline-block;
+  font-size: 20px;
+  font-family:Franklin Gothic Medium;
+  margin: 8px 2px;
+  cursor: pointer;background-color: Transparent; 
+  color: OrangeRed; 
+  border: 2px solid OrangeRed;}">
+	</form>
+	<h3 style="color:FireBrick; font-size:34px;" >{{ msg }}</h3>
+{% endblock %}	
